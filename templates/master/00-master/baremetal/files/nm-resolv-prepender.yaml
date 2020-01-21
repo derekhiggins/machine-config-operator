@@ -6,6 +6,8 @@ contents:
     #!/bin/bash
     IFACE=$1
     STATUS=$2
+    # If $DHCP6_FQDN_FQDN contains a "-"
+    [[ "$DHCP6_FQDN_FQDN" =~ - ]] && hostname $DHCP6_FQDN_FQDN
     case "$STATUS" in
         up|down|dhcp4-change|dhcp6-change)
         logger -s "NM virtual-ip-prepender triggered by ${1} ${2}."
